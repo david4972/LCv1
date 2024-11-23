@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadCraft</title>
+    <style>
+        body {
+            background-image: url('/static/images/lc_website.png'); /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        h1, h3 {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        p {
+            font-size: 18px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .download-link {
+            color: #4CAF50;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .download-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to LeadCraft</h1>
+
+    <p>An AI-powered lead generation platform to optimize sales strategies for SMEs.</p>
+    <p>To use this program, click the upload file button or click sample data to download and upload our sample dataset and test our Lead prospect generator.</p>
+    <p>Download <a href="{{ url_for('static', filename='LCappData.csv') }}" class="download-link" download>Sample Data</a>.</p>
+
+    <!-- Upload Form -->
+    <div class="button-container">
+        <form action="{{ url_for('upload_files') }}" method="POST" enctype="multipart/form-data">
+            <label for="file">Choose a CSV file:</label>
+            <input type="file" name="file" id="file" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if uploaded_file %}
+            <!-- Evaluate Leads Button -->
+            <form action="{{ url_for('evaluate_leads_view') }}" method="POST">
+                <button type="submit">Evaluate Leads</button>
+            </form>
+
+            <!-- Display Results Button -->
+            <form action="{{ url_for('display_results') }}" method="GET">
+                <button type="submit">Display Results</button>
+            </form>
+
+            <!-- Save Results Button -->
+            <form action="{{ url_for('save_results') }}" method="GET">
+                <button type="submit">Save Results</button>
+            </form>
+        {% endif %}
+    </div>
+
+</body>
+</html>

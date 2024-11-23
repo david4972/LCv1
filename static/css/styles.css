@@ -1,0 +1,49 @@
+/* Centering the main container */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+    color: #fff;
+}
+
+body {
+    background-image: url("../images/lc_website.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0; /* Remove default body margin */
+    font-family: Times New Roman, sans-serif;
+}
+
+/* Styling the header */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Button styling */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Adding some hover effects for buttons */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Center-aligning buttons within container */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

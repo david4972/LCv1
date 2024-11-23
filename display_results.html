@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <title>Display Results</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+     <h2>Processed Leads Data</h2>
+     {% if search_enabled %}
+         <form method="post">
+             <label for="search_query">Search by Contact Method:</label>
+             <input type="text" id="search_query" name="search_query" placeholder="Enter 'Call', 'Email', or 'Text'">
+             <button type="submit">Search</button>
+         </form>
+     {% endif %}
+
+     {% if tables %}
+         <div>
+             <h3>Lead Data</h3>
+             {{ tables[0]|safe }}
+         </div>
+         <div>
+             <h3>Metrics Summary</h3>
+             {{ metrics|safe }}
+         </div>
+         <div>
+             <h3>Segmentation Analysis by Industry</h3>
+             {{ segmentation|safe }}
+         </div>
+    {% else %}
+         <p>No results to display.</p>
+    {% endif %}
+
+     {% if feedback_enabled %}
+         <h3>Provide Feedback</h3>
+         <form method="post" action="/feedback">
+             <label for="feedback">Was this analysis helpful?</label><br>
+             <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Enter your feedback here..."></textarea><br>
+             <button type="submit">Submit Feedback</button>
+         </form>
+     {% endif %}
+
+     <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadCraft - Evaluate Leads</title>
+    <<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Evaluate Leads</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message success">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('evaluate_leads') }}" method="POST">
+            <button type="submit">Start Evaluation</button>
+        </form>
+        <a href="{{ url_for('index') }}"><button>Back to Home</button></a>
+    </div>
+</body>
+</html>
